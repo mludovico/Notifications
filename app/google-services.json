@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100572346746",
+    "project_id": "notification-app-kotlin",
+    "storage_bucket": "notification-app-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100572346746:android:38ce3c649eb139131bfec3",
+        "android_client_info": {
+          "package_name": "br.com.mludovico.notifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100572346746-a60k2g79ch1sfnnff2snccpnlrmes165.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx-SHmhTMjJvWHjlmdkevNgv8ALNSn0fI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100572346746-a60k2g79ch1sfnnff2snccpnlrmes165.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
