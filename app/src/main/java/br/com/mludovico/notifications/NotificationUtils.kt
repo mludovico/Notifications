@@ -15,9 +15,21 @@ lateinit var notificationManager: NotificationManager
 lateinit var builder: NotificationCompat.Builder
 
 fun Context.showNotification(channelId: String, title: String, body: String) {
+
     notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
     val intent = Intent(this, MainActivity::class.java)
     val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+    builder = NotificationCompat.Builder(this, channelId).apply {
+        setSmallIcon(R.drawable.ic_baseline_refresh_24)
+        setContentTitle(title)
+        setContentText(body)
+        setAutoCancel(true)
+        setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+        setContentIntent(pendingIntent)
+    }
+
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         notificationChannel = NotificationChannel(channelId, body, NotificationManager.IMPORTANCE_HIGH)
             .apply {
@@ -25,14 +37,9 @@ fun Context.showNotification(channelId: String, title: String, body: String) {
                 enableVibration(true)
             }
         notificationManager.createNotificationChannel(notificationChannel)
-        builder = NotificationCompat.Builder(this, channelId).apply {
-            setSmallIcon(R.drawable.ic_baseline_refresh_24)
-            setContentTitle(title)
-            setContentText(body)
-            setAutoCancel(true)
-            setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE))
-            setContentIntent(pendingIntent)
-        }
+
+    } else {
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
     notificationManager.notify(channelId.toInt(), builder.build())
 }
